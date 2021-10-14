@@ -16,11 +16,19 @@ public class JpaMain{
     tx.begin();
 
     try{
-      Member member = new Member();
-      member.setId(2L);
-      member.setName("HelloA");
+//      //저장
+//      Member member = new Member();
+//      member.setId(2L);
+//      member.setName("HelloA");
+//
+//      em.persist(member);
+      //조회
+      Member findMember = em.find(Member.class, 2L);
 
-      em.persist(member);
+      //삭제
+//      em.remove(findMember);
+
+      //수정
 
       tx.commit();
     } catch (Exception e){
