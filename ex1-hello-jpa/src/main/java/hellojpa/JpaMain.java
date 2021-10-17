@@ -1,5 +1,6 @@
 package hellojpa;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,19 +17,19 @@ public class JpaMain{
     tx.begin();
 
     try{
-//      //저장
-//      Member member = new Member();
-//      member.setId(2L);
-//      member.setName("HelloA");
-//
-//      em.persist(member);
-      //조회
-      Member findMember = em.find(Member.class, 2L);
+      // 객체를 생성한 상테(비영속)
+      Member member = new Member();
+      member.setId(1L);
+      member.setName("회원1");
 
-      //삭제
-//      em.remove(findMember);
+      // 객체를 저장한 상태(영속)
+      em.persist(member);
 
-      //수정
+      // 준영속 detached
+      em.detach(member);
+
+      // 객체를 삭제한 상태
+      em.remove(member);
 
       tx.commit();
     } catch (Exception e){
