@@ -17,21 +17,30 @@ public class JpaMain{
     tx.begin();
 
     try{
-      // 객체를 생성한 상테(비영속)
+//      // 객체를 생성한 상테(비영속)
+//      Member member = new Member();
+//      member.setId(1L);
+//      member.setName("회원1");
+//
+//      // 객체를 저장한 상태(영속)
+//      em.persist(member);
+//
+//      // 준영속 detached
+//      em.detach(member);
+//
+//      // 객체를 삭제한 상태
+//      em.remove(member);
+//
+//      tx.commit();
+
       Member member = new Member();
       member.setId(1L);
       member.setName("회원1");
-
-      // 객체를 저장한 상태(영속)
+      //1차 캐시에 저장됨
       em.persist(member);
+      //1차 캐시에서 조회
+      Member findMember = em.find(Member.class, "member1");
 
-      // 준영속 detached
-      em.detach(member);
-
-      // 객체를 삭제한 상태
-      em.remove(member);
-
-      tx.commit();
     } catch (Exception e){
       tx.rollback();
     } finally {
