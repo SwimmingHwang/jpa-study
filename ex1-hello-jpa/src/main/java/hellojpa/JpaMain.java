@@ -25,6 +25,8 @@ public class JpaMain{
     transaction.commit(); // [트랜잭션] 커밋
     // ==> flush -> db transaction commit
 
+//    영속성 컨텍스트의 변경내용을 데이터베이스에 반
+
     transaction.commit();
 
     emf.close();
