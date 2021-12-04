@@ -38,12 +38,16 @@ public class Member {
     return team;
   }
 
-  /**
-   * java getter setter 관례에 의한 메소드가 아님을 강조하기 위해 setTeam - >change Team
-   * @param team
-   */
   public void setTeam(Team team) {
     this.team = team;
-    team.getMembers().add(this); // 연관관계 편의 메소드
   }
+
+  //  /**
+//   * java getter setter 관례에 의한 메소드가 아님을 강조하기 위해 setTeam - >change Team
+//   * @param team
+//   */
+//  public void changeTeam(Team team) {
+//    this.team = team;
+//    team.getMembers().add(this); // 연관관계 편의 메소드
+//  }
 }
