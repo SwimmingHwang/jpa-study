@@ -10,15 +10,22 @@ public class JpaMain{
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
     EntityManager em = emf.createEntityManager();
-    EntityTransaction transaction = em.getTransaction();//엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
+    EntityTransaction tx = em.getTransaction();//엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
 
-    transaction.begin();
+    tx.begin();
 
+    try{
+      Team team = new Team();
+      team.setName("TeamA");
+      em.persist(team);
+
+
+    }
     Member memberA = new Member(102L,"member102");
     em.persist(memberA);
     em.flush();
 
-    transaction.commit();
+    tx.commit();
     emf.close();
   }
 }
