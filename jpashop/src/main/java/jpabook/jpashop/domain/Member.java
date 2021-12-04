@@ -19,4 +19,6 @@ public class Member {
   private String city;
   private String street;
   private String zipcode;
+
+  // member에서 orders를 조회하는게 사실상 비즈니스적으로도 별로임
 }

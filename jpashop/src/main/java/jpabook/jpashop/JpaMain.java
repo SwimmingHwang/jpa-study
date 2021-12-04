@@ -11,14 +11,18 @@ public class JpaMain{
 
     EntityManager em = emf.createEntityManager();
 
-    EntityTransaction transaction = em.getTransaction();//엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
+    EntityTransaction tx = em.getTransaction();//엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
 
-    transaction.begin();
+    tx.begin();
 
     try {
-      transaction.commit();
+
+
+
+
+      tx.commit();
     } catch (Exception e){
-      transaction.rollback();
+      tx.rollback();
     } finally {
       emf.close();
     }
