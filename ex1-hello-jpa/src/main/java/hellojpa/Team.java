@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Team {
+public class  Team {
 
   @Id @GeneratedValue
   private Long id;
