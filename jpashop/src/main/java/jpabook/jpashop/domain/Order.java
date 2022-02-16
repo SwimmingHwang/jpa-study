@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "ORDERS") // DB마다 Order이 안 되는 경우가 있어서 Orders로 많이
-public class Order {
+public class Order extends BaseEntity{
 
   @Id
   @GeneratedValue

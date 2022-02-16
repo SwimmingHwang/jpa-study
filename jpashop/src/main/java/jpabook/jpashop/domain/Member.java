@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Member {
+public class Member extends BaseEntity{
   @Id @GeneratedValue
   @Column(name="MEMBER_ID") // 요즘 소문자에 언더스코어 방식을 많이 씀
   private Long id;
