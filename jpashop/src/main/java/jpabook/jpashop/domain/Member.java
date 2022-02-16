@@ -21,4 +21,5 @@ public class Member extends BaseEntity{
   private String zipcode;
 
   // member에서 orders를 조회하는게 사실상 비즈니스적으로도 별로임
+  private String username;
 }
