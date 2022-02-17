@@ -36,7 +36,7 @@ public class Order extends BaseEntity{
    * 연관관계 매핑
    */
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "MEMBER_ID")
+  @JoinColumn(name = "MEMBER_ID" )
   private Member member;
 
   @OneToMany(mappedBy = "order", cascade = ALL)
@@ -51,7 +51,8 @@ public class Order extends BaseEntity{
   @Enumerated(EnumType.STRING) // Ordinal 쓰면 안 됨 - 나중에 순서 꼬일 수 있어서
   private  OrderStatus status;
 
-  public void addOrderItem(){
+  public void addOrderItem(OrderItem orderItem){
+    this.orderItems.add(orderItem);
 
   }
 }
