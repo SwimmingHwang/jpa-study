@@ -1,6 +1,7 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class Child {
   private String name;
 
   // child가 연관관계의 주인 (외래키가 있는)
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "parent_id")
   Parent parent;
 }
