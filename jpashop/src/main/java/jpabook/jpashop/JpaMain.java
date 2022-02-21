@@ -5,12 +5,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Delivery;
 import jpabook.jpashop.domain.Item;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.Peroid;
 
 public class JpaMain{
   public static void main(String[] args){
@@ -23,36 +25,18 @@ public class JpaMain{
     tx.begin();
 
     try {
-
-      Order order = new Order();
+      Address address = new Address("city","street","10000");
 
       Member member = new Member();
-      member.setName("황수영");
-
-
-      Delivery delivery = new Delivery();
-      delivery.setCity("Seoul");
-
-      Item item = new Item();
-      item.setName("허니콤보");
-
-      OrderItem orderItem = new OrderItem();
-      orderItem.setItem(item);
-      orderItem.setCount(1);
-      orderItem.setOrderPrice(12000);
-
-
-      order.setMember(member);
-      order.setDelivery(delivery);
-      order.addOrderItem(orderItem);
-
+      member.setName("member1");
+      member.setHomeAddress(address);
       em.persist(member);
-      em.persist(item);
 
-      em.persist(order);
-
+      Address newAddress = new Address("newCity", address.getStreet(), address.getZipcode());
+      member.setHomeAddress(newAddress);
 
       tx.commit();
+
     } catch (Exception e){
       e.printStackTrace();
       tx.rollback();
