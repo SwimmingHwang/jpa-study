@@ -56,11 +56,11 @@
     - **SQL 표준을 지키지 않는 특정 데이터베이스 만의 고유한 기능**
 - h2 dialect 예시
   
-    ![Untitled](Untitled%202.png)
+    ![Untitled](../image/Untitled%202.png)
     
 - 오라클은 limit 이 아니라 rownum을 씀 아래 예시
   
-    ![Untitled](Untitled%203.png)
+    ![Untitled](../image/Untitled%203.png)
     
 - javax.persistence.xx
     
@@ -77,7 +77,7 @@ Default가 하이버네이트라고 한다.
 
 # Hello JPA - 애플리케이션 개발
 
-![Untitled](Untitled%204.png)
+![Untitled](../image/Untitled%204.png)
 
 ## EntityManagerFactory 생성 및 EntityManager 생성
 
@@ -148,7 +148,7 @@ Hibernate:
             (?, ?)
 ```
 
-![Untitled](Untitled%205.png)
+![Untitled](../image/Untitled%205.png)
 
 - 조회
 
