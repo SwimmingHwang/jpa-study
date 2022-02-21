@@ -10,7 +10,7 @@
     1. Hibernate
     2. DB driver
     
-    ![Untitled](Untitled.png)
+    ![Untitled](../image/Untitled.png)
     
     - javax.persistence-api
         
