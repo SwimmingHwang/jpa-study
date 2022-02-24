@@ -28,7 +28,7 @@ public class JpaMain{
     try {
       Member member = new Member();
       member.setName("member1");
-      member.setHomeAddress(new Address("homeCity", "street", "10000"));
+      member.setAddress(new Address("homeCity", "street", "10000"));
 
       member.getFavoriteFoods().add("치킨");
       member.getFavoriteFoods().add("족발");
@@ -43,7 +43,7 @@ public class JpaMain{
       em.clear(); // 깔끔한 상태에서 조회하려고 clear
 
       Member findMember = em.find(Member.class, member.getId());
-      Address a = findMember.getHomeAddress();
+      Address a = findMember.getAddress();
 
 //      findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
 //

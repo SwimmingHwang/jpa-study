@@ -33,12 +33,8 @@ public class Member {
   @Column(length = 10) // 그냥 추가하면 제약을 DB 확인하지 않아도 파악할 수 있는 장점이 있음
   private String name;
 
-
-  @Embedded // 양쪽에 다 Embedded 표기를 추천 함
-  private Peroid workPeroid;
-
   @Embedded
-  private Address homeAddress;
+  private Address address;
 
   @ElementCollection
   @CollectionTable(name = "FAVORITE_FOOD", joinColumns = {
