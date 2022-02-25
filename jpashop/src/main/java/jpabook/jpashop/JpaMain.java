@@ -1,10 +1,14 @@
 package jpabook.jpashop;
 
 import com.sun.org.apache.xpath.internal.operations.Or;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.AddressEntity;
 import jpabook.jpashop.domain.Book;
@@ -14,6 +18,7 @@ import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 import jpabook.jpashop.domain.Peroid;
+import org.hibernate.Criteria;
 
 public class JpaMain{
   public static void main(String[] args){
@@ -26,33 +31,19 @@ public class JpaMain{
     tx.begin();
 
     try {
-      Member member = new Member();
-      member.setName("member1");
-      member.setAddress(new Address("homeCity", "street", "10000"));
 
-      member.getFavoriteFoods().add("치킨");
-      member.getFavoriteFoods().add("족발");
-      member.getFavoriteFoods().add("피자");
+      CriteriaBuilder cb = em.getCriteriaBuilder();
+      CriteriaQuery<Member> query = cb.createQuery(Member.class);
 
-      member.getAddressHistory().add(new AddressEntity("old1", "street", "10000"));
-      member.getAddressHistory().add(new AddressEntity("old2", "street", "10000"));
+      Root<Member> m = query.from(Member.class);
 
-      em.persist(member);
+      CriteriaQuery<Member> cq = query.select(m);
+      cq = cq.where(cb.equal(m.get("name"), "kim"));
 
-      em.flush(); // DB엔 넣고
-      em.clear(); // 깔끔한 상태에서 조회하려고 clear
+      List<Member> resultList = em.createQuery(cq)
+          .getResultList();
 
-      Member findMember = em.find(Member.class, member.getId());
-      Address a = findMember.getAddress();
 
-//      findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
-//
-//      // 컬렉션에 있는 치킨을 한식으로 바꾸고 싶다
-//      findMember.getFavoriteFoods().remove("치킨");
-//      findMember.getFavoriteFoods().add("한식");
-
-//      findMember.getAddressHistory().remove(new Address("old1", "street", "10000")); // equals 함수 쓰이니 equals 재정의 잘 해야 함
-//      findMember.getAddressHistory().add(new Address("newCity1", "street", "10000"));
 
       tx.commit();
 

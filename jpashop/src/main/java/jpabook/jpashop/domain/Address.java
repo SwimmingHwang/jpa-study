@@ -17,7 +17,8 @@ public class Address {
   @Column(length = 5)
   private String zipcode;
 
-  public String fullAddress(){ // 이런 함수도 작성할 수 있고 객체 지향쩍으로 설계할 수 있다다    return getCity() + getStreet() + getZipcode();
+  public String fullAddress(){
+    return getCity() + getStreet() + getZipcode();// 이런 함수도 작성할 수 있고 객체 지향쩍으로 설계할 수 있다다    return getCity() + getStreet() + getZipcode();
   }
 
   // 기본생성자를 만들어 줘야 한다. 왜?
