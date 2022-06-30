@@ -32,18 +32,19 @@ public class JpaMain{
 
     try {
 
-      CriteriaBuilder cb = em.getCriteriaBuilder();
-      CriteriaQuery<Member> query = cb.createQuery(Member.class);
+//      CriteriaBuilder cb = em.getCriteriaBuilder();
+//      CriteriaQuery<Member> query = cb.createQuery(Member.class);
+//
+////      Root<Member> m = query.from(Member.class);
+//
+//      CriteriaQuery<Member> cq = query.select(m);
+//      cq = cq.where(cb.equal(m.get("name"), "kim"));
+//
+//      List<Member> resultList = em.createQuery(cq)
+//          .getResultList();
 
-      Root<Member> m = query.from(Member.class);
-
-      CriteriaQuery<Member> cq = query.select(m);
-      cq = cq.where(cb.equal(m.get("name"), "kim"));
-
-      List<Member> resultList = em.createQuery(cq)
-          .getResultList();
-
-
+      Member m = new Member();
+      onFlushDirty
 
       tx.commit();
 
